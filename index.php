@@ -1,29 +1,7 @@
 <?php
 
-$socket = fsockopen("test.shelenkov.com", 80, $errorCode, $errorString);
-if (!$socket)
-{
-	echo "$errorCode ($errorString)<br />\n";
-	die();
-}
+require 'functions/moviesFunc.php';
+require 'movies.php';
 
-$result  = "" . "\r\n";
-$result .= "" . "\r\n";
-$result .= "" . "\r\n";
-$result .= "\r\n";
-
-fwrite($socket, $result);
-while (!feof($socket))
-{
-	echo fgets($socket);
-}
-fclose($socket);
-
-
-
-
-
-
-
-
+displayMovie($movies);
 
