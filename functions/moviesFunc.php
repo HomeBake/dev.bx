@@ -1,15 +1,11 @@
 <?php
 
-
-
-
 function checkInput()
 {
 	echo "Введите возраст: \n >> ";
 	$age = readline();
-	while (!is_numeric($age) || ($age < 0) || ($age > 150))
+	while (!is_numeric($age) || ((int)$age < 0) || ((int)$age > 150))
 	{
-		exit; //Для возможности повтора ввода данных нужно убрать эту строку
 		echo "Нужно ввести положительное, целое число меньше 150! Повторите ввод: \n >> ";
 		$age = readline();
 	}
