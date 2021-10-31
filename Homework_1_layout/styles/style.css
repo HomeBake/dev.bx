@@ -201,12 +201,17 @@
 .content-gradient-button
 {
 	position: relative;
-	background-color: rgb(59, 178, 35);
+	background: #4EE7B0;
 	height: 56px;
 	width: 221px;
 	border-radius: 7px;
 	color: rgba(255, 255, 255, 1);
-
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 56px;
+	text-align: center;
+	text-transform: uppercase;
 
 }
 
