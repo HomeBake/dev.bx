@@ -157,7 +157,7 @@
 
 .content
 {
-
+	position: relative;
 	width: 100%;
 	overflow: auto;
 	flex-direction: row;
