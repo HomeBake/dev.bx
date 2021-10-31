@@ -1,0 +1,295 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+.body
+{
+	overflow: hidden
+}
+.wrapper
+{
+	display: flex;
+	overflow: hidden;
+	height: 100vh;
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+}
+.sidebar
+{
+
+	display: block;
+	background: #383838;
+	width: 400px;
+
+
+}
+.menu
+{
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.menu ul
+{
+	margin: 20px;
+}
+
+.menu-image
+{
+	margin: 52px 1px 0px 1px;
+
+
+}
+
+.menu-item
+{
+	display: block;
+	box-shadow: 0px 1px 0px 0px rgba(242, 242, 242, 0.1);
+}
+
+.menu-item a
+{
+	display: flex;
+	height: 70px;
+	align-items: center;
+	text-transform: uppercase;
+	line-height: 22px;
+	color: rgba(183, 183, 183, 1);
+	line-height: 22px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: flex-start;
+	padding-left: 10px;
+}
+
+.menu-item--active a,
+.menu-item:hover a
+{
+	background: rgba(255, 255, 255, 0.05);
+	color: rgba(255, 255, 255, 1) !important;
+}
+
+.menu li:last-of-type
+{
+	box-shadow: 0px 0px 0px 0px #000000;
+}
+.container
+{
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	background: #CCCCCC;
+}
+.header
+{
+	display: flex;
+	height: 148px;
+	background: #fff;
+	flex-direction: row;
+	flex-wrap: wrap;
+	box-shadow: 0px 4px 4px rgb(0 0 0 / 5%);
+	align-items: center;
+	position:relative
+}
+
+.search-bar
+{
+	display: flex;
+	box-shadow: 0px 1px 0px 0px rgba(196, 196, 196, 1);
+	margin-left: 4vh;
+	width: 60%;
+	margin-top: auto;
+	margin-bottom: 21px;
+
+}
+
+.search-bar-icon
+{
+	margin-right: 14px;
+}
+
+.search-bar-text input
+{
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(153, 153, 153, 1);
+	width: 492px;
+}
+
+.button-find button
+{
+	color: white;
+	background: #E7A04E;
+	text-transform: uppercase;
+	width: 89px;
+	height: 40px;
+	border-radius: 10px ;
+}
+
+
+.button-find
+{
+	margin-top: auto;
+	margin-bottom: 21px;
+	margin-left: 1vh;
+}
+
+.button-add
+{
+	margin: auto 7vh 21px auto;
+}
+
+.button-add button
+{
+	color: white;
+	background: #4EE7B0;
+	text-transform: uppercase;
+	width: 158px;
+	height: 40px;
+	border-radius: 7px;
+
+}
+
+.content
+{
+
+	width: 100%;
+	overflow: auto;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+}
+
+
+
+
+.content-entity
+{
+	display: inline-block;
+	height: 700px;
+	width: 370px;
+	background: #FFFFFF;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	margin:20px 30px 30px 44px;
+}
+
+.content-gradient
+{
+	display: flex;
+	background-color: rgba(0, 0, 0, 0);
+	position: absolute;
+	height: 700px;
+	width: 370px;
+	opacity: 0;
+	border-radius: 20px;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+
+}
+.content-gradient:hover
+{
+	opacity: 1;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.content-gradient-button
+{
+	position: relative;
+	background-color: rgb(59, 178, 35);
+	height: 56px;
+	width: 221px;
+	border-radius: 7px;
+	color: rgba(255, 255, 255, 1);
+
+
+}
+
+.content-entity-image img
+{
+	height: 439px;
+	width: 370px;
+	border-radius: 20px 20px 0px 0px;
+}
+
+
+.content-entity-text
+{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 20px;
+}
+
+.content-entity-text-title
+{
+	height: 36px;
+	line-height: 30px;
+	font-size: 22px;
+	color: #333333;
+	margin: 12px 0px 0px 0px;
+}
+
+.content-entity-text-title-english
+{
+	height: 25px;
+	width: 330px;
+	line-height: 25px;
+	font-size: 14px;
+	color: #999999;
+	box-shadow: 0px 1px 0px 0px #F2F2F2;
+	padding-bottom: 15px ;
+}
+
+.content-entity-text-description
+{
+	color: rgba(51, 51, 51, 1);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	margin-top: 15px;
+}
+
+.content-entity-text-info
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 23px;
+	width: 370px;
+}
+
+.content-entity-text-info-icon
+{
+	margin-left: 2px;
+	margin-right: 3px;
+	margin-top: 2px;
+
+}
+.content-entity-text-info-time
+{
+	font-style: normal;
+	font-size: 12px;
+	font-weight: 400;
+	color: #CCCCCC;
+	width: 115px;
+}
+
+.content-entity-text-info-genre
+{
+
+	font-size: 10px;
+	font-weight: 600;
+	text-align: right;
+	text-transform: uppercase;
+	color: #CCCCCC;
+	margin-left: 3px;
+
+}
