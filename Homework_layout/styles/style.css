@@ -10,7 +10,6 @@
 {
 	display: flex;
 	overflow: hidden;
-	height: 100vh;
 	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
 	font-weight: 600;
@@ -86,7 +85,7 @@
 .header
 {
 	display: flex;
-	height: 148px;
+	height: 88px;
 	background: #fff;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -238,6 +237,9 @@
 	font-size: 22px;
 	color: #333333;
 	margin-top: 12px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .content-entity-text-title-english
@@ -249,16 +251,23 @@
 	color: #999999;
 	box-shadow: 0 1px 0 0 #F2F2F2;
 	padding-bottom: 15px ;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .content-entity-text-description
 {
+	height: 99px;
+	width: 330px;
 	color: rgba(51, 51, 51, 1);
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 20px;
 	margin-top: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .content-entity-text-info
@@ -295,5 +304,8 @@
 	text-transform: uppercase;
 	color: #CCCCCC;
 	margin-left: 3px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 
 }
