@@ -1,0 +1,188 @@
+@import "./style-movie-info.css";
+@import "./movie-card.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+.body
+{
+	overflow: hidden
+}
+.wrapper
+{
+	display: flex;
+	overflow: hidden;
+	height: 100vh;
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+}
+.sidebar
+{
+
+	display: block;
+	background: #383838;
+	width: 400px;
+
+
+}
+.menu
+{
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.menu ul
+{
+	margin: 20px;
+}
+
+.menu-image
+{
+	margin: 52px 1px 0 1px;
+
+
+}
+
+.menu-item
+{
+	display: block;
+	box-shadow: 0 1px 0 0 rgba(242, 242, 242, 0.1);
+}
+
+.menu-item a
+{
+	display: flex;
+	height: 70px;
+	align-items: center;
+	text-transform: uppercase;
+	line-height: 22px;
+	color: rgba(183, 183, 183, 1);
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: flex-start;
+	padding-left: 10px;
+}
+
+.menu-item--active a,
+.menu-item:hover a
+{
+	background: rgba(255, 255, 255, 0.05);
+	color: rgba(255, 255, 255, 1) !important;
+}
+
+.menu li:last-of-type
+{
+	box-shadow: 0 0 0 0 #000000;
+}
+.container
+{
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	background: #CCCCCC;
+}
+.header
+{
+	display: flex;
+	padding-bottom: 10px;
+	padding-top: 27px;
+	background: #fff;
+	flex-direction: row;
+	flex-wrap: wrap;
+	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
+	align-items: center;
+	position:relative
+}
+
+.search-bar
+{
+
+	margin-left: 4vh;
+	width: 60%;
+	margin-top: auto;
+	margin-bottom: 21px;
+
+}
+
+.search-bar-icon
+{
+	position: absolute;
+	margin-right: 14px;
+	margin-top: 10px;
+}
+.search-bar-text
+{
+	height: 45px;
+
+
+}
+
+.search-bar-text-input
+{
+	padding-left: 25px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(153, 153, 153, 1);
+	width: 777px;
+	box-shadow: 0 1px 0 0 rgba(196, 196, 196, 1);
+}
+
+.button-find:hover
+{
+	background: #be9030;
+}
+
+
+.button-find
+{
+	color: white;
+	background: #E7A04E;
+	text-transform: uppercase;
+	width: 89px;
+	height: 40px;
+	border-radius: 10px ;
+	margin-top: auto;
+	margin-bottom: 21px;
+	margin-left: 1vh;
+}
+
+
+.button-add input:hover
+{
+	background: #6bc4a4;
+}
+.button-add
+{
+	margin: auto 7vh 26px auto;
+}
+
+.button-add input
+{
+	color: white;
+	background: #4EE7B0;
+	text-transform: uppercase;
+	width: 158px;
+	height: 40px;
+	border-radius: 7px;
+
+}
+
+.content
+{
+	min-height: 89vh;
+	position: relative;
+	height: auto;
+	width: 100%;
+	overflow: auto;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	background: #F2F2F2;
+
+}
+
+
+
+
