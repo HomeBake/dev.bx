@@ -22,6 +22,8 @@
 	display: block;
 	background: #383838;
 	width: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
 
 
 }
@@ -100,7 +102,6 @@
 {
 
 	margin-left: 4vh;
-	width: 60%;
 	margin-top: auto;
 	margin-bottom: 21px;
 
@@ -156,7 +157,8 @@
 }
 .button-add
 {
-	margin: auto 7vh 26px auto;
+	margin: auto 7vh 26px 0;
+	width: 100px;
 }
 
 .button-add input
