@@ -1,7 +1,10 @@
 <?php
 /** @var string $content */
-/** @var string $config */
+/** @var string $menu */
 /** @var array $genres */
+/** @var string $homeId */
+/** @var string $favoriteId */
+/** @var string $selectedPage*/
 
 ?>
 <!DOCTYPE html>
@@ -22,19 +25,19 @@
 				</svg>
 			</div>
 			<ul>
-				<li class = "menu-item <?= (basename($_SERVER['SCRIPT_NAME'],$suffix = '.php') AND is_null($get['genre']) == 'index') ? 'menu-item--active' : ''?>">
-					<a href="./<?= $config['menu']['Главная']?>.php">Главная</a>
+				<li class = "menu-item <?= ($selectedPage == 'index') ? 'menu-item--active' : ''?>">
+					<a href="./index.php"><?=$homeId?></a>
 				</li>
 				<?
 				foreach ($genres as $key => $genre)  {
-				?>
-					<?/*var_dump(($get['genre']))*/?>
-					<li class = "menu-item <?= ($get['genre']==$genre ? 'menu-item--active' : '')?>">
-						<a href="./index.php?genre=<?= $genre?>"><?= $genre?></a>
-					</li>
-				<?}?>
-				<li class = "menu-item <?= (basename($_SERVER['SCRIPT_NAME'],$suffix = '.php') == 'favorite') ? 'menu-item--active' : ''?>">
-					<a href="./<?= $config['menu']['Избранное']?>.php">Избранное</a>
+					echo renderTemplate('.\resources\block\_menu_item.php', [
+						'genre' => $genre,
+						'selectedPage' => $selectedPage,
+						'key' => $key
+						]);
+				}?>
+				<li class = "menu-item <?= ($selectedPage == 'favorite') ? 'menu-item--active' : ''?>">
+					<a href="./favorite.php"><?= $favoriteId?></a>
 				</li>
 
 			</ul>
