@@ -20,7 +20,7 @@ function renderLayout(string $content, array $templateDate = []):void
 {
 	$data = array_merge($templateDate, [
 		'content' => $content,
-		'get' => $_GET
+
 	]);
 	$result = renderTemplate("./resources/pages/layout.php", $data);
 	echo $result;
