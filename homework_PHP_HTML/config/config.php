@@ -2,8 +2,8 @@
 
 $page_config = [
 	'menu' => array(
-		'Главная' => 'index',
-		'Избранное' => 'favorite'
+		'home' => 'главная',
+		'favorite' => 'Избранное'
 	)
 	];
 
