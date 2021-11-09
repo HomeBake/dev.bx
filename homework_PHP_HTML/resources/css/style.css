@@ -9,16 +9,17 @@
 .wrapper
 {
 	display: flex;
-	overflow: hidden;
+	overflow-y: hidden;
 	height: 100vh;
 	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
 	font-weight: 600;
 	font-size: 18px;
+
 }
 .sidebar
 {
-
+	min-width: 400px;
 	display: block;
 	background: #383838;
 	width: 400px;
@@ -85,6 +86,20 @@
 	flex: 1;
 	background: #CCCCCC;
 }
+
+.content
+{
+	min-height: 89vh;
+	position: relative;
+	height: auto;
+	width: 100%;
+	overflow: auto;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	background: #F2F2F2;
+
+}
+
 .header
 {
 	display: flex;
@@ -92,7 +107,7 @@
 	padding-top: 27px;
 	background: #fff;
 	flex-direction: row;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
 	align-items: center;
 	position:relative
@@ -115,7 +130,9 @@
 }
 .search-bar-text
 {
+	width: 910px;
 	height: 45px;
+	margin-right: 300px;
 
 
 }
@@ -169,19 +186,6 @@
 	width: 158px;
 	height: 40px;
 	border-radius: 7px;
-
-}
-
-.content
-{
-	min-height: 89vh;
-	position: relative;
-	height: auto;
-	width: 100%;
-	overflow: auto;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	background: #F2F2F2;
 
 }
 

@@ -25,7 +25,7 @@
 				</svg>
 			</div>
 			<ul>
-				<li class = "menu-item <?= ($selectedPage == 'index') ? 'menu-item--active' : ''?>">
+				<li class = "menu-item <?= ($selectedPage === 'index') ? 'menu-item--active' : ''?>">
 					<a href="./index.php"><?=$homeId?></a>
 				</li>
 				<?
@@ -36,7 +36,7 @@
 						'key' => $key
 						]);
 				}?>
-				<li class = "menu-item <?= ($selectedPage == 'favorite') ? 'menu-item--active' : ''?>">
+				<li class = "menu-item <?= ($selectedPage === 'favorite') ? 'menu-item--active' : ''?>">
 					<a href="./favorite.php"><?= $favoriteId?></a>
 				</li>
 
