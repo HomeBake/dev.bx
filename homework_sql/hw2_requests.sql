@@ -119,19 +119,23 @@ having count(MOVIE_ID) > 3;
 #8. Вывести самый популярный жанр для каждого актёра.
 # Хотел из этого запроса удалять повторения по полю actor, но не нашел способа. Был еще варант с MAX по COUNT, но тоже не получилось
 
-SELECT distinct
-a.NAME AS actor,
-g.NAME AS ganre,
-COUNT(g.NAME) AS COUNT
-FROM actor AS a, genre AS g, movie_actor AS ma, movie_genre AS mg
-WHERE a.ID = ma.ACTOR_ID AND ma.MOVIE_ID = mg.MOVIE_ID AND mg.GENRE_ID = g.ID
-group by a.NAME, g.NAME
-order by COUNT desc;
 
 
 
-
-
+SELECT
+       actor,
+       ganre,
+	MAX(MOVIE_COUNT)
+FROM (SELECT distinct
+		a.NAME AS actor,
+		g.NAME AS ganre,
+		COUNT(g.NAME) AS MOVIE_COUNT
+	FROM actor AS a, genre AS g, movie_actor AS ma, movie_genre AS mg
+	WHERE a.ID = ma.ACTOR_ID AND ma.MOVIE_ID = mg.MOVIE_ID AND mg.GENRE_ID = g.ID
+	GROUP BY a.NAME, g.NAME
+	ORDER BY MOVIE_COUNT desc) as t
+GROUP BY actor
+ORDER BY MAX(MOVIE_COUNT) DESC;
 
 
  select * FROM actor;
