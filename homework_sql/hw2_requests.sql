@@ -124,8 +124,8 @@ having count(MOVIE_ID) > 3;
 
 SELECT
        actor,
-       ganre,
-	MAX(MOVIE_COUNT)
+       ganre
+
 FROM (SELECT distinct
 		a.NAME AS actor,
 		g.NAME AS ganre,
