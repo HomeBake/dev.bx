@@ -7,4 +7,12 @@ $page_config = [
 	)
 	];
 
+$bd_config = [
+	'host' => 'localhost',
+	'user' => 'students',
+	'password' => 'student',
+	'bdName' => 'dev2'
+];
+
+
 /*echo $page_config['menu']['Главная'];*/
