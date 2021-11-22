@@ -1,14 +1,14 @@
 <?php
-/*var_dump($get['movie'])*/
 /** @var array $movies */
-/*var_dump($movies);*/?>
+
+?>
 
 
 
 <div class="info-content">
 	<div class="info-content-name">
 		<div class="info-content-name-title">
-			<?= $movies['title']." (".$movies['release-date'].")"?>
+			<?= $movies['TITLE']." (".$movies['RELEASE_DATE'].")"?>
 		</div>
 		<div class="info-content-name-icon">
 			<svg width="43" height="37" viewBox="0 0 43 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,21 +20,21 @@
 	</div>
 	<div class="info-content-bottom-name">
 		<div class="info-content-bottom-name-original"></div>
-		<?= $movies['original-title']?>
+		<?= $movies['ORIGINAL_TITLE']?>
 		<div class="info-content-bottom-name-age">
-		<?= $movies['age-restriction'].'+'?></div>
+		<?= $movies['AGE_RESTRICTION'].'+'?></div>
 	</div>
 	<div class="info-content-main">
 		<div class="info-content-main-left">
 			<div class="info-content-main-image">
-				<img src="./resources/images/movie_images/<?=$movies['id']?>.jpg">
+				<img src="./resources/images/movie_images/<?=$movies['ID']?>.jpg">
 			</div>
 		</div>
 		<div class="info-content-main-right">
 			<div class="info-content-main-description">
 				<div class="info-content-main-description-rating-line">
 					<?for ($i = 1; $i <= 10; $i++ ) {
-						if ($i <= intval(round($movies['rating'],PHP_ROUND_HALF_DOWN))){
+						if ($i <= intval(round($movies['RATING'],PHP_ROUND_HALF_DOWN))){
 							?><div class="rating-rectangle-active"></div><?
 						} else {
 							?><div class="rating-rectangle-inactive"></div><?
@@ -43,7 +43,7 @@
 
 				</div>
 				<div class="info-content-main-description-number">
-					<?=$movies['rating']?>
+					<?=$movies['RATING']?>
 				</div>
 				</div>
 			<div class="info-content-main-description-about">
@@ -55,7 +55,7 @@
 						Год производства:
 					</div>
 					<div class="info-content-main-description-element-right">
-						<?= $movies['release-date']?>
+						<?= $movies['RELEASE_DATE']?>
 					</div>
 				</div>
 				<div class="info-content-main-description-table-element">
@@ -63,7 +63,7 @@
 						Режиссер:
 					</div>
 					<div class="info-content-main-description-element-right">
-						<?= $movies['director']?>
+						<?= $movies['DIRECTOR']?>
 					</div>
 				</div>
 				<div class="info-content-main-description-table-element">
@@ -71,7 +71,7 @@
 						В главных ролях:
 					</div>
 					<div class="info-content-main-description-element-right">
-						<?= implode(', ',$movies['cast'])?>
+						<?= implode(', ',$movies['MOVIE_ACTOR'])?>
 					</div>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 				Описание
 			</div>
 			<div class="info-content-main-description-text">
-				<?= $movies['description']?>
+				<?= $movies['DESCRIPTION']?>
 			</div></div>
 
 	</div>
