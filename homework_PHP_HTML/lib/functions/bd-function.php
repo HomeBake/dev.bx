@@ -2,7 +2,7 @@
 
 //homework_PHP_HTML/lib/functions/bd-function.php
 
-function movieQuery(mysqli $database, string $where = 'm.ID = m.ID'):mysqli_result
+function movieQuery(mysqli $database, string $select = '', string $where = ''):mysqli_result
 {
 	$query = 'SELECT
 	d.NAME as DIRECTOR,
@@ -14,8 +14,7 @@ function movieQuery(mysqli $database, string $where = 'm.ID = m.ID'):mysqli_resu
 	m.AGE_RESTRICTION,
 	m.RELEASE_DATE,
 	m.RATING,
-    g.GENRE_ID,
-    g2.CODE,
+    '.$select.'
 	(SELECT GROUP_CONCAT(GENRE_ID)
 	    FROM movie_genre as mg
 	    WHERE mg.MOVIE_ID = m.ID) as MOVIE_GENRES,
@@ -24,9 +23,7 @@ function movieQuery(mysqli $database, string $where = 'm.ID = m.ID'):mysqli_resu
         WHERE m.ID = ma.MOVIE_ID) as MOVIE_ACTOR
 FROM movie as m
 join director d on d.ID = m.DIRECTOR_ID
-join movie_genre g on m.ID = g.MOVIE_ID
-join genre g2 on g2.ID = g.GENRE_ID
-WHERE '.$where;
+'.$where;
 	$result = mysqli_query($database,$query);
 	if (!$result)
 	{
@@ -34,4 +31,17 @@ WHERE '.$where;
 		trigger_error($error, E_USER_ERROR);
 	}
 	return $result;
+}
+
+function defence(mysqli $database, string $get, bool $isInt = false)
+{
+	if (!$isInt)
+	{
+		$newGet = htmlspecialchars($get);
+		return '"'.mysqli_real_escape_string($database, $newGet).'"';
+	}
+	else
+	{
+		return (int) $get;
+	}
 }
