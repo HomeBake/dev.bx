@@ -19,7 +19,6 @@ function refactorActor(array $actors): array
 
 function refactorGenre(array $genres): array
 {
-
 	$keys = [];
 	$items = [];
 	foreach ($genres as $genre)
@@ -38,7 +37,7 @@ function refactorGenre(array $genres): array
 function refactorMovieGenres(array $movies,$genres): array
 {
 	$result = $movies;
-	foreach ($result as &$movie)
+	foreach ($movies as $key => $movie)
 	{
 		$movieGenresID = explode(',',$movie['MOVIE_GENRES']);
 		$genreName = [];
@@ -47,7 +46,7 @@ function refactorMovieGenres(array $movies,$genres): array
 			$genreName[] = $genres[$movieGenreID]['NAME'];
 		}
 		$genresName = implode(',', $genreName);
-		$movie['MOVIE_GENRES'] = $genresName;
+		$result[$key]['MOVIE_GENRES'] = $genresName;
 	}
 
 	return $result;
@@ -56,15 +55,15 @@ function refactorMovieGenres(array $movies,$genres): array
 
 function refactorMovieActors(array $movies,$actors): array
 {
+	$movies = isNull($movies, [false]);
 	$result = $movies;
 	$movieActorsID = explode(',',$result['MOVIE_ACTOR']);
-	$genreName = [];
 	foreach ($movieActorsID as $movieActorID)
 	{
 		$actorName[] = $actors[$movieActorID]['NAME'];
 	}
 	$actorsName = implode(',', $actorName);
-	$result['MOVIE_ACTOR'] = $actorName;
+	$result['MOVIE_ACTOR'] = $actorsName;
 	return $result;
 	}
 
