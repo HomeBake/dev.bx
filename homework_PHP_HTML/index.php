@@ -13,10 +13,11 @@ require_once "./lib/functions/movie-functions.php";
 require_once "./lib/functions/connect-to-bd.php";
 require_once "./lib/functions/selected-page.php";
 require_once "./lib/functions/refactor_query.php";
+require_once "./lib/functions/helper.php";
 
 $database = connectToBd($bd_config);
 $genres = getAll($database,'genre');
-$page = renderTemplate("./resources/pages/main.php", ['movies' => getMovies($database,$genres,$_GET['genre'])]);
+$page = renderTemplate("./resources/pages/main.php", ['movies' => getMovies($database,$genres)]);
 /*$moviese = getMovies($database,$genres,$_GET['genre']);*/
 
 

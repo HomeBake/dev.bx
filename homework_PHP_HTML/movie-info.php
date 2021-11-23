@@ -10,15 +10,28 @@ require_once "./lib/functions/movie-functions.php";
 require_once "./lib/functions/selected-page.php";
 require_once "./lib/functions/connect-to-bd.php";
 require_once "./lib/functions/refactor_query.php";
+require_once "./lib/functions/helper.php";
 
 
 $database = connectToBd($bd_config);
 $actors = getAll($database,'actor');
-$page = renderTemplate("./resources/pages/info.php", [
-	'movies' => getMovieByID($database,$actors,$_GET['movie'])
-]);
+$movies = getMovies($database, $actors);
+
+if (!array_key_exists(0,$movies))
+{
+	$page = renderTemplate("./resources/pages/info.php", [
+		'movies' => $movies
+	]);
+}
+else
+{
+	$page = renderTemplate('./resources/block/_no_found_movie.php',[]);
+}
+
 
 $database = connectToBd($bd_config);
+
+
 
 renderLayout($page, [
 	'config' => $page_config,
