@@ -2,24 +2,50 @@
 
 /* ./lib/movie-functions.php*/
 
-function getMovies($database,$genres,$genreNAME = null):array
+function getMovies($database,array $array):array
 {
-	if (is_null($genreNAME))
+	$select = 'g.GENRE_ID,g2.CODE,';
+	$join = 'join movie_genre g on m.ID = g.MOVIE_ID join genre g2 on g2.ID = g.GENRE_ID ';
+	if (!is_null($_GET['search']))
 	{
-		$result = movieQuery($database);
+		$Title = defence($database, "%".$_GET['search']."%");
+		$result =  movieQuery($database,$select,$join.'WHERE m.TITLE LIKE '.$Title.' GROUP BY m.TITLE');
+		$rows = [];
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			$rows[] = $row;
+		}
+		return refactorMovieGenres($rows,$array);
+	}
+	elseif (!is_null($_GET['genre']))
+	{
+		$genreNAME = defence($database, $_GET['genre']);
+		$result =  movieQuery($database,$select,$join.'WHERE g2.CODE ='.$genreNAME);
+		$rows = [];
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			$rows[] = $row;
+		}
+		return refactorMovieGenres($rows,$array);
+	}
+	elseif (!is_null($_GET['movie']))
+	{
+		$movieID = defence($database, $_GET['movie'], true);
+		$result =  movieQuery($database,'','WHERE m.ID = '.$movieID);
+		$row = mysqli_fetch_assoc($result);
+		$row = isNull($row);
+		return refactorMovieActors($row,$array);
+
 	}
 	else{
-		$genreNAME = '"'.htmlspecialchars($genreNAME).'"';
-		$result = movieQuery($database,'g2.CODE ='.$genreNAME);
+		$result = movieQuery($database);
+		$rows = [];
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			$rows[] = $row;
+		}
+		return refactorMovieGenres($rows,$array);
 	}
-	$rows = [];
-	while ($row = mysqli_fetch_assoc($result))
-	{
-		$rows[] = $row;
-	}
-
-
-	return refactorMovieGenres($rows,$genres);
 
 }
 
@@ -51,12 +77,3 @@ function getAll(mysqli $database, string $tables): array
 
 
 
-
-function getMovieByID(mysqli $database,array $actors, string $movieID): array
-{
-	$movieID = htmlspecialchars($movieID);
-	$where = 'MOVIE_ID = '.$movieID;
-	$result =  movieQuery($database,$where);
-	$row = mysqli_fetch_assoc($result);
-	return refactorMovieActors($row,$actors);
-}
