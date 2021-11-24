@@ -7,13 +7,13 @@
 
 declare(strict_types = 1);
 require_once "./config/config.php";
-require_once "./lib/functions/bd-function.php";
-require_once "./lib/functions/template-functions.php";
-require_once "./lib/functions/movie-functions.php";
-require_once "./lib/functions/connect-to-bd.php";
-require_once "./lib/functions/selected-page.php";
-require_once "./lib/functions/refactor_query.php";
-require_once "./lib/functions/helper.php";
+require_once "./lib/bd-function.php";
+require_once "./lib/template-functions.php";
+require_once "./lib/movie-functions.php";
+require_once "./lib/connect-to-bd.php";
+require_once "./lib/selected-page.php";
+require_once "./lib/refactor-query.php";
+require_once "./lib/helper.php";
 
 $database = connectToBd($bd_config);
 $genres = getAll($database,'genre');
