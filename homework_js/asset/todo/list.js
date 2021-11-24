@@ -54,7 +54,8 @@ export class List
 
 	handleUpdateButtonClick(item)
 	{
-		let field = prompt("Введите новое название:", );
+		const index = this.items.indexOf(item);
+		let field = prompt("Введите новое название:", this.items[index].title );
 		if (field === null || field ==='')
 		{
 			alert('без изменений')
@@ -62,7 +63,6 @@ export class List
 		}
 		else
 		{
-			const index = this.items.indexOf(item);
 			const addInput = field;
 			if (addInput)
 			{
