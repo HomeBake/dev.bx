@@ -1,6 +1,6 @@
 <?php
 
-//homework_PHP_HTML/lib/functions/refactor_query.php
+//homework_PHP_HTML/lib/functions/refactor-query.php
 
 
 function refactorActor(array $actors): array

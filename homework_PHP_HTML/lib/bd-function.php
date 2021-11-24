@@ -2,7 +2,7 @@
 
 //homework_PHP_HTML/lib/functions/bd-function.php
 
-function movieQuery(mysqli $database, string $select = '', string $where = ''):mysqli_result
+function movieQuery(mysqli $database, string $where = ''):mysqli_result
 {
 	$query = 'SELECT
 	d.NAME as DIRECTOR,
@@ -14,7 +14,6 @@ function movieQuery(mysqli $database, string $select = '', string $where = ''):m
 	m.AGE_RESTRICTION,
 	m.RELEASE_DATE,
 	m.RATING,
-    '.$select.'
 	(SELECT GROUP_CONCAT(GENRE_ID)
 	    FROM movie_genre as mg
 	    WHERE mg.MOVIE_ID = m.ID) as MOVIE_GENRES,
@@ -33,15 +32,3 @@ join director d on d.ID = m.DIRECTOR_ID
 	return $result;
 }
 
-function defence(mysqli $database, string $get, bool $isInt = false)
-{
-	if (!$isInt)
-	{
-		$newGet = htmlspecialchars($get);
-		return '"'.mysqli_real_escape_string($database, $newGet).'"';
-	}
-	else
-	{
-		return (int) $get;
-	}
-}

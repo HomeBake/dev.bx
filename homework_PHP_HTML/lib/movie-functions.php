@@ -4,12 +4,10 @@
 
 function getMovies($database,array $array):array
 {
-	$select = 'g.GENRE_ID,g2.CODE,';
-	$join = 'join movie_genre g on m.ID = g.MOVIE_ID join genre g2 on g2.ID = g.GENRE_ID ';
 	if (!is_null($_GET['search']))
 	{
-		$Title = defence($database, "%".$_GET['search']."%");
-		$result =  movieQuery($database,$select,$join.'WHERE m.TITLE LIKE '.$Title.' GROUP BY m.TITLE');
+		$Title = mysqli_real_escape_string($database, $_GET['search']);
+		$result =  movieQuery($database,'WHERE m.TITLE LIKE \'%'.$Title.'%\' GROUP BY m.TITLE');
 		$rows = [];
 		while ($row = mysqli_fetch_assoc($result))
 		{
@@ -19,8 +17,8 @@ function getMovies($database,array $array):array
 	}
 	elseif (!is_null($_GET['genre']))
 	{
-		$genreNAME = defence($database, $_GET['genre']);
-		$result =  movieQuery($database,$select,$join.'WHERE g2.CODE ='.$genreNAME);
+		$genreNAME = mysqli_real_escape_string($database, $_GET['genre']);
+		$result =  movieQuery($database,'join movie_genre g on m.ID = g.MOVIE_ID join genre g2 on g2.ID = g.GENRE_ID WHERE g2.CODE ='.'"'.$genreNAME.'"');
 		$rows = [];
 		while ($row = mysqli_fetch_assoc($result))
 		{
@@ -30,8 +28,8 @@ function getMovies($database,array $array):array
 	}
 	elseif (!is_null($_GET['movie']))
 	{
-		$movieID = defence($database, $_GET['movie'], true);
-		$result =  movieQuery($database,'','WHERE m.ID = '.$movieID);
+		$movieID = (int)($_GET['movie']);
+		$result =  movieQuery($database,'WHERE m.ID ='.$movieID);
 		$row = mysqli_fetch_assoc($result);
 		$row = isNull($row);
 		return refactorMovieActors($row,$array);
