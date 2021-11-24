@@ -63,14 +63,10 @@ export class List
 		else
 		{
 			const index = this.items.indexOf(item);
-			if (index > -1)
-			{
-				this.items.splice(index, 1);
-			}
 			const addInput = field;
 			if (addInput)
 			{
-				this.items.push(this.createItem({title: addInput}));
+				this.items.splice(index,1,this.createItem({title: addInput}));
 				this.save().then(() => {
 					this.renderItems();
 				}).catch((error) => {
