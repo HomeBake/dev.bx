@@ -20,7 +20,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 	}
 
 
-	public function filledField(string $Name = '', string $PersonalAcc = '', string $BankName = '', string $BIC = '', string $CorrespAcc = '',array $fields = []):array
+	public function filledField( $Name = '', $PersonalAcc = '', $BankName = '', $BIC = '', $CorrespAcc = '',array $fields = []):array
 	{
 		$newFields = [
 			'Name' => $Name,
@@ -58,7 +58,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 				$this->filledField('','','','','CorrespAcc')
 			],
 			'filled but only space' => [
-				$this->filledField('     ','      ','     ','      ','      ') //  Считается ли это по ГОСТу допустимо?
+				$this->filledField('      ','      ','     ','      ','      ') //  Считается ли это по ГОСТу допустимо?
 			],
 		];
 	}
@@ -76,20 +76,20 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 
 
 
-/*	public function  testValidateFailTypeCheck() :void
+	public function  testValidateFailTypeCheck() :void
 	{
-		return;
-		//Хотел сделать тест для случаев, когда в значение в поле не проходит проверку !$this->isValueTypeValid($value),
-		// но или я что-то не понял или у нас такой исход просто невозможен, PHP сам ловит все попытки добавить значения, которые не может привести к строке
-	}*/
+		$fields = $this->filledField([''],[''],[''],[''],['']);
+		$result = $this->getValidateResultByField($fields);
+		static::assertFalse($result->isSuccess());
+	}
 
 	public function testValidateFailMaxLengthCheckBigger(): void
 	{
-		$nameMaxLength= $this->getMaxFieldLength('Name');
-		$personalAccMaxLength= $this->getMaxFieldLength('PersonalAcc');
+		$nameMaxLength = $this->getMaxFieldLength('Name');
+		$personalAccMaxLength = $this->getMaxFieldLength('PersonalAcc');
 		$bankNameMaxLength= $this->getMaxFieldLength('BankName');
-		$bICMaxLength= $this->getMaxFieldLength('BIC');
-		$correspAccMaxLength= $this->getMaxFieldLength('CorrespAcc');
+		$bICMaxLength = $this->getMaxFieldLength('BIC');
+		$correspAccMaxLength = $this->getMaxFieldLength('CorrespAcc');
 
 		// Забыл. что мы пишем тесты на код, который редко изменяется, поэтому сделал так. В случае если мы знаем что код не меняется,
 		// то просто вставим ниже числа вручную
