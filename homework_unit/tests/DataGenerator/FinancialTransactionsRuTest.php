@@ -58,8 +58,11 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 				$this->filledField('','','','','CorrespAcc')
 			],
 			'filled but only space' => [
-				$this->filledField('      ','      ','     ','      ','      ') //  Считается ли это по ГОСТу допустимо?
+				$this->filledField('     ','      ','     ','      ','      ') //  Считается ли это по ГОСТу допустимо?
 			],
+			'filled but only delimiters ' => [
+				$this->filledField('%%%%%','%%%%%%','%%%%%','%%%%%','%%%%%%') //  Считается ли это по ГОСТу допустимо?
+			]
 		];
 	}
 
