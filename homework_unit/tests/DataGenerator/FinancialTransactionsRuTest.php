@@ -56,12 +56,6 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 			],
 			'filled only correspAcc' => [
 				$this->filledField('','','','','CorrespAcc')
-			],
-			'filled but only space' => [
-				$this->filledField('     ','      ','     ','      ','      ') //  Считается ли это по ГОСТу допустимо?
-			],
-			'filled but only delimiters ' => [
-				$this->filledField('%%%%%','%%%%%%','%%%%%','%%%%%','%%%%%%') //  Считается ли это по ГОСТу допустимо?
 			]
 		];
 	}
@@ -133,7 +127,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 		static::assertEquals('ST00012|Name=|PersonalAcc=|BankName=|BIC=|CorrespAcc=', $data);
 	}
 
-	public function testPickupDelimiterFirstSymbolEqualDelimiterAndAllPreviousDelimitersUsed():void
+	/*public function testPickupDelimiterFirstSymbolEqualDelimiterAndAllPreviousDelimitersUsed():void
 	{
 		$dataGenerator = new \App\DataGenerator\FinancialTransactionsRu();
 
@@ -144,7 +138,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 		$data = $dataGenerator->getData();
 
 		static::assertEquals('ST00012_Name=s~|_PersonalAcc=PersonalAcc_BankName=BankName_BIC=BIC_CorrespAcc=CorrespAcc', $data);
-	}
+	}*/
 
 
 
