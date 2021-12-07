@@ -255,7 +255,7 @@ final class FinancialTransactionsRu
 		$allValues = implode(' ', $this->fields);
 		foreach ($possibleDelimiters as $delimiter)
 		{
-			if (!mb_strpos($allValues, $delimiter))
+			if (mb_strpos($allValues, $delimiter) === false)
 			{
 				return $delimiter;
 			}
