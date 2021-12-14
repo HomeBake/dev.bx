@@ -2,21 +2,19 @@
 
 namespace Decorator;
 
+
 class AdvertisementDecorator extends AbstractAdvertisementDecorator
 {
 
-	function getAdvertisementBody()
+	function getAdvertisementBody(): string
 	{
-		$this -> originalAdvertisementBody = $this-> advertisement->getBody();
-	}
-
-	function changeBody()
-	{
-		$this -> decoratedAdvertisementBody = "<h1>Заголовок</h1>".$this->originalAdvertisementBody."<h2>Футер<h2>";
+		$this->originalAdvertisementBody = $this->advertisement->getBody();
+		return $this->originalAdvertisementBody;
 	}
 
 	function applyBody(): string
 	{
-		return $this ->decoratedAdvertisementBody;
+		$this->decoratedAdvertisementBody = "<h1>Заголовок</h1>" . $this->getAdvertisementBody() . "<h2>Футер<h2>";
+		return $this->decoratedAdvertisementBody;
 	}
 }

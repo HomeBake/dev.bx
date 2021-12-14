@@ -18,7 +18,6 @@ abstract class AbstractAdvertisementDecorator
 
 	abstract function getAdvertisementBody();
 
-	abstract function changeBody();
 
 	abstract function applyBody();
 }

@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($class) {
-	include __DIR__ . '/' . str_replace("\\", "/",  $class) . '.php';
+	include __DIR__ . "/" . str_replace("\\", "/",  $class) . '.php';
 });
 
 
@@ -15,3 +15,7 @@ $calculator->applyCost();
 
 $calculator = new \Decorator\VatCostDecorator($calculator);
 var_dump($calculator->applyCost()->getTotalCost());
+
+
+$costDecorator = new \Decorator\AdvertisementDecorator($advertisement);
+var_dump($costDecorator->applyBody());
