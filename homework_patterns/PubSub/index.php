@@ -19,19 +19,25 @@ spl_autoload_register(function ($class) {
 //	->update()
 //;
 
-//$service = new Service();
-//$context = new \State\ServiceStateContext(new \State\ActiveState($service));
+$game = new \Entity\GameSubscribe();
+$context = new \State\GameSubscribeContext(new \State\ActiveSubscribeState($game));
 //
-//var_dump($context);
-//var_dump($context->changeState());
+var_dump($context);
+var_dump($context->changeState());
 //var_dump($context->changeState());
 
 //function purchasePremiumLite()
 //{
-	var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumLiteStrategy()));
+	//var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumLiteStrategy()));
 //}
 
 //function purchasePremium($type)
 //{
-	var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumStrategy()));
+	//var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumStrategy()));
 //}
+
+var_dump(\Strategy\PurchaseGameSubscribeContext::purchaseGame(new \Strategy\PurchaseYearGameSubscribeStrategy()));
+
+var_dump(\Strategy\PurchaseGameSubscribeContext::purchaseGame(new \Strategy\PurchaseSixMonthGameSubscribeStrategy()));
+
+var_dump(\Strategy\PurchaseGameSubscribeContext::purchaseGame(new \Strategy\PurchaseMonthGameSubscribeStrategy()));
