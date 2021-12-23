@@ -6,6 +6,7 @@
 /** @var string $favoriteId */
 /** @var string $selectedPage*/
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,11 +30,12 @@
 					<a href="./index.php"><?=$homeId?></a>
 				</li>
 				<?
-				foreach ($genres as $key => $genre)  {
+				foreach ($genres as $genre)  {
+					$a = $genre['NAME'];
 					echo renderTemplate('.\resources\block\_menu_item.php', [
-						'genre' => $genre,
+						'genre' => $genre['NAME'],
 						'selectedPage' => $selectedPage,
-						'key' => $key
+						'key' => $genre['CODE']
 						]);
 				}?>
 				<li class = "menu-item <?= ($selectedPage === 'favorite') ? 'menu-item--active' : ''?>">

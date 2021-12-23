@@ -1,32 +1,32 @@
 <!--#./resources/block/_movie_card.php
 --><?php
-$hours = floor($movie['duration'] / 60);
-$minutes = $movie['duration'] % 60;
+$hours = floor($movie['DURATION'] / 60);
+$minutes = $movie['DURATION'] % 60;
 /*var_dump($movie['id'])*/
 ?>
 <div class="content-entity">
 	<div class="content-gradient">
 		<form action="./movie-info.php?">
 			<div class="content-gradient-button">
-				<input type="submit" name="movie" id="sat" value="<?=$movie['id']?>" style="height: 56px;width: 220px;padding-top: 10px;opacity:0%;position: absolute" >
+				<input type="submit" name="movie" id="sat" value="<?=$movie['ID']?>" style="height: 56px;width: 220px;padding-top: 10px;opacity:0%;position: absolute" >
 				Подробнее
 			</div>
 		</form>
 
 	</div>
 	<div class="content-entity-image">
-		<img src="./resources/images/movie_images/<?=$movie['id']?>.jpg" alt="Фильм">
+		<img src="./resources/images/movie_images/<?=$movie['ID']?>.jpg" alt="Фильм">
 
 	</div>
 	<div class="content-entity-text">
 		<div class="content-entity-text-title">
-			<?= $movie['title'].' ('.$movie['release-date'].')'?>
+			<?= $movie['TITLE'].' ('.$movie['RELEASE_DATE'].')'?>
 		</div>
 		<div class="content-entity-text-title-english">
-			<?= $movie['original-title']?>
+			<?= $movie['ORIGINAL_TITLE']?>
 		</div>
 		<div class="content-entity-text-description">
-			<?= $movie['description']?>
+			<?= $movie['DESCRIPTION']?>
 		</div>
 		<div class="content-entity-text-info">
 			<div class="content-entity-text-info-icon">
@@ -36,12 +36,12 @@ $minutes = $movie['duration'] % 60;
 				</svg>
 			</div>
 			<div class="content-entity-text-info-time">
-				<?= $movie['duration']?> мин. /
+				<?= $movie['DURATION']?> мин. /
 				<?= "$hours".":".$minutes
 				?>
 			</div>
 			<div class="content-entity-text-info-genre">
-				<?= implode(', ' , $movie['genres']);?>
+				<?= $movie['MOVIE_GENRES'];?>
 			</div>
 		</div>
 	</div>

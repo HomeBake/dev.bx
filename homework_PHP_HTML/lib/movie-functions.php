@@ -2,54 +2,76 @@
 
 /* ./lib/movie-functions.php*/
 
-function getMovies(array $movies,array $genres) :array
+function getMovies($database,array $array):array
 {
-	$result = [];
-	if (isset($_GET['search']))
+	if (!is_null($_GET['search']))
 	{
-		$search = $_GET['search'];
-		foreach ($movies as $movie)
+		$Title = mysqli_real_escape_string($database, $_GET['search']);
+		$result =  movieQuery($database,'WHERE m.TITLE LIKE \'%'.$Title.'%\' GROUP BY m.TITLE');
+		$rows = [];
+		while ($row = mysqli_fetch_assoc($result))
 		{
-			$title = mb_strtolower($movie['title']);
-			if (strripos($title, $search) !== false)
-			{
-				$result[] = $movie;
-			}
+			$rows[] = $row;
 		}
+		return refactorMovieGenres($rows,$array);
 	}
-	elseif (isset($_GET['genre']))
+	elseif (!is_null($_GET['genre']))
 	{
-		$getGenre = $genres[$_GET['genre']];
-		foreach ($movies as $movie)
+		$genreNAME = mysqli_real_escape_string($database, $_GET['genre']);
+		$result =  movieQuery($database,'join movie_genre g on m.ID = g.MOVIE_ID join genre g2 on g2.ID = g.GENRE_ID WHERE g2.CODE ='.'"'.$genreNAME.'"');
+		$rows = [];
+		while ($row = mysqli_fetch_assoc($result))
 		{
-			if (in_array($getGenre,$movie['genres']))
-			{
-				$result[] = $movie;
-			}
+			$rows[] = $row;
 		}
+		return refactorMovieGenres($rows,$array);
 	}
-	else
+	elseif (!is_null($_GET['movie']))
 	{
-		$result = $movies;
-	}
-	return $result;
-}
+		$movieID = (int)($_GET['movie']);
+		$result =  movieQuery($database,'WHERE m.ID ='.$movieID);
+		$row = mysqli_fetch_assoc($result);
+		$row = isNull($row);
+		return refactorMovieActors($row,$array);
 
-function getMovieByID(string $id, array $movies = []): array
-{
-	$result = [];
-	if (!is_integer($id) and is_numeric($id))
-	{
-		$id = (int)$id;
 	}
-	else
-	{
-		return $result;
-	}
-	foreach ($movies as $movie)
-	{
-		$result = ($movie['id'] === $id) ? $movie : $result;
+	else{
+		$result = movieQuery($database);
+		$rows = [];
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			$rows[] = $row;
+		}
+		return refactorMovieGenres($rows,$array);
 	}
 
-	return $result;
 }
+
+function getAll(mysqli $database, string $tables): array
+{
+	$query = 'SELECT * FROM '.$tables;
+	$result = mysqli_query($database,$query);
+
+	if (!$result)
+	{
+		$error = mysqli_errno($database). ':' . mysqli_error($database);
+		trigger_error($error, E_USER_ERROR);
+	}
+	$rows = [];
+	while ($row = mysqli_fetch_assoc($result))
+	{
+		$rows[] = $row;
+	}
+	if ($tables === 'genre')
+	{
+		return refactorGenre($rows);
+	}
+	elseif ($tables === 'actor')
+	{
+		return refactorActor($rows);
+	}
+	return [];
+}
+
+
+

@@ -2,6 +2,7 @@
 /** @var string $genre */
 /** @var string $selectedPage */
 /** @var string $key */
+
 ?>
 
 <!-- .\resources\block\_menu_item.php-->
